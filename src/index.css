@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .active {
+    @apply text-rose-500
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+}
