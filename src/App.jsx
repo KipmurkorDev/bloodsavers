@@ -16,7 +16,7 @@ function App() {
   const isAuthPage =
     useLocation().pathname === "/login" || useLocation().pathname === "/signup";
 
-  const home = useLocation().pathname === "/";
+  const home = useLocation().pathname === "/home";
 
   return (
     <>
@@ -24,6 +24,7 @@ function App() {
       {isAuthPage ? <LogoNav /> : null}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
