@@ -31,7 +31,7 @@ function SelectField({label, name, id, value, onChange}) {
 }
 
 
-const Signup = () => {
+const Signup = ({onLogin}) => {
   const [formData, setFormData] = useState({fullName: '', email: '', country: '', bloodGroup: '', state: '', city: '', phone: '', password: ''});
 
   const navigate = useNavigate();
@@ -44,7 +44,12 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    navigate('/home');
+    if(formData.fullName !== '' && formData.email !== '' && formData.country !== '' && formData.bloodGroup !== '' && formData.state !== '' && formData.city !== '' && formData.phone !== '' && formData.password !== '') {
+      onLogin();
+      navigate('/home');
+    } else {
+      alert('Please fill all the fields');
+    }
   }
 
 

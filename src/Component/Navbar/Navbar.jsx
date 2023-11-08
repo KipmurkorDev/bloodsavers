@@ -1,9 +1,14 @@
-import React from "react";
+import {useState} from "react";
 import Logo from "../../assets/logo.svg";
-import Love from "../../assets/love.svg";
 import { Link, NavLink } from "react-router-dom";
+import Modal from "../Home/Modal";
 
-const Navbar = () => {
+const Navbar = ({isLoggedIn}) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModal = () => {
+    setShowModal(!showModal);
+  }
   return (
 
       <div className="flex items-center justify-between bg-red-800 text-white pt-6 pb-3 px-4 ">
@@ -16,7 +21,7 @@ const Navbar = () => {
           <NavLink to="/dashboard" activeClassName='active'>Dashboard</NavLink>
         </div>
         <div>
-          <button className="bg-black rounded-[10px] py-3 px-4 font-medium">Send Alert</button>
+          <button className="bg-black rounded-[10px] py-3 px-4 font-medium" onClick={handleModal}>Send Alert</button>
         </div>
       </div>
   );

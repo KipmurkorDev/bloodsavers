@@ -2,7 +2,7 @@ import {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 
-const Login = () => {
+const Login = ({onLogin}) => {
   const [formData, setFormData] = useState({email: '', password: ''});
 
   const navigate = useNavigate();
@@ -15,7 +15,13 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    navigate('/home');
+    if(formData.email !== '' && formData.password !== '') {
+      onLogin();
+      navigate('/home');
+    } else {
+      alert('Please fill all the fields');
+    }
+
   }
   return (
     <>
