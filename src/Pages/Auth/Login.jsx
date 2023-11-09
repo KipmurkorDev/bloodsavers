@@ -1,28 +1,74 @@
 import {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = ({onLogin}) => {
   const [formData, setFormData] = useState({email: '', password: ''});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState({});
 
+
+  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
   const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await axios.post(`${baseUrl}/blood-savers/login/`, {
+        headers: {
+          'Access-Control-Allow-Origin': "*",
+          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        },
+      });
+      if(response.status === 200) {
+        toast.success("Login successful!", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        localStorage.setItem("token", response.data.token);
+        navigate("/home");
+      }
+    } catch (error) {
+      if(error.response) {
+        setIsSubmitting(false);
+        if (error.response.status === 404) {
+          toast.error("User not registered");
+        } else if (error.response.status === 401) {
+          toast.error("Wrong Credentials");
+        } else if (error.response.status === 400) {
+          setError(error.response.data.errors);
+          toast.error("Some fields are missing");
+        } else {
+          toast.error(error.response.data.message);
+        }
+      } else {
+        toast.error("Something went wrong");
+      }
+    }
+  };
+
+  // const navigate = useNavigate();
 
   const handleChange = (e) => {
     const {name, value} = e.target;
     setFormData({...formData, [name]: value});
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    if(formData.email !== '' && formData.password !== '') {
-      onLogin();
-      navigate('/home');
-    } else {
-      alert('Please fill all the fields');
-    }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(formData);
+  //   if(formData.email !== '' && formData.password !== '') {
+  //     onLogin();
+  //     navigate('/home');
+  //   } else {
+  //     alert('Please fill all the fields');
+  //   }
+  // }
 
-  }
   return (
     <>
       <div className="flex flex-col justify-center items-center align-middle mt-10">
@@ -40,6 +86,7 @@ const Login = ({onLogin}) => {
                 onChange={handleChange}
                 placeholder="johndoe@example.com"
                 className="w-full px-6 h-[50px] rounded-[10px] border-2 border-neutral-400 placeholder:text-stone-400 placeholder:text-lg font-medium"
+                disabled={isSubmitting}
               />
             </div>
 
@@ -52,11 +99,16 @@ const Login = ({onLogin}) => {
                 onChange={handleChange}
                 placeholder=""
                 className="w-full px-6 h-[50px] rounded-[10px] border-2 border-neutral-400 placeholder:text-stone-400 placeholder:text-lg font-medium"
+                disabled={isSubmitting}
               />
             </div>
 
             <div className="inline-flex items-center justify-center">
-              <button type="submit" className="bg-red-800 rounded-[15px] h-[2.7em] w-[200px] mx-auto text-white text-lg font-medium">Login</button>
+              <button
+                type="submit"
+                className="bg-red-800 rounded-[15px] h-[2.7em] w-[200px] mx-auto text-white text-lg font-medium">
+                {isSubmitting ? "Logging in..." : "Login"}
+              </button>
             </div>
           </form>
           <p className="py-3">

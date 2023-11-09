@@ -2,6 +2,9 @@ import {useState} from "react";
 import Logo from "../../assets/logo.svg";
 import { Link, NavLink } from "react-router-dom";
 import Modal from "../Home/Modal";
+import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = ({isLoggedIn}) => {
   const [showModal, setShowModal] = useState(false);
@@ -9,6 +12,7 @@ const Navbar = ({isLoggedIn}) => {
   const handleModal = () => {
     setShowModal(!showModal);
   }
+
   return (
 
       <div className="flex items-center justify-between bg-red-800 text-white pt-6 pb-3 px-4 ">

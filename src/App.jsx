@@ -9,6 +9,8 @@ import LogoNav from "./Component/Navbar/LogoNav";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Donate from "./Pages/Donate/Donate";
 import Footer from "./Component/Footer/Footer";
+import { ToastContainer } from "react-toastify";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,6 +34,7 @@ function App() {
       {!isAuthPage && !isLoggedIn ? <AuthNav /> : null}
       {isAuthPage ? <LogoNav /> : null}
       {!isAuthPage && isLoggedIn ? <Navbar isLoggedIn={isLoggedIn}  /> : null}
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />

@@ -1,8 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import {useState, useEffect} from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
+import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AuthNav = () => {
+
   return (
     <div className="flex items-center justify-between bg-red-800 text-white pt-6 pb-3 px-4 ">
       <div className="">
