@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 
 function InputField({label, type, name, id, value, placeholder, onChange, error}) {
   return (
-    <div className='inline-flex flex-col'>
+    <div className='inline-flex flex-col sm:w-full lg:w-1/2'>
       <label htmlFor={name} className="text-xl font-medium">{label}</label>
       <input type={type} name={name} id={id} value={value} placeholder={placeholder} onChange={onChange} className="w-[350px] px-6 h-[50px] rounded-[10px] border-2 border-neutral-400 placeholder:text-stone-400 placeholder:text-lg font-medium" />
       {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -113,24 +113,24 @@ const Signup = ({onLogin}) => {
       <div >
         <h2 className="text-[40px] font-bold text-center">Register</h2>
         <p className="text-center text-stone-400 text-lg font-medium py-6">Join BloodSavers help save lives</p>
-        <form action="" className='flex flex-col gap-8' onSubmit={handleSubmit}>
+        <form action="" className='flex flex-col gap-8 sm:items-center' onSubmit={handleSubmit}>
 
-          <div className='flex gap-6'>
+          <div className='flex gap-6 sm:flex-col sm:gap-4 lg:flex-row lg:gap-8'>
               <InputField label="Full Name" type="text" name="name" id="name" placeholder='Enter full name' error={errors.name} onChange={handleChange} />
               <InputField label="Email" type="email" name="email" id="email" placeholder='johndoe@example.com' onChange={handleChange}/>
           </div>
 
-          <div className='flex gap-6'>
+          <div className='flex gap-6 sm:flex-col sm:gap-4 lg:flex-row lg:gap-8'>
             <InputField label='Country' type='text' name='country' id='country' placeholder='USA' error={errors.country} onChange={handleChange}/>
             <SelectField label='Blood Group' name='bloodGroup' id='bloodGroup' error={errors.bloodGroup} onChange={handleChange}/>
           </div>
 
-          <div className='flex gap-6'>
+          <div className='flex gap-6 sm:flex-col sm:gap-4 lg:flex-row lg:gap-8'>
             <InputField label='State/Province' type='text' name='state' id='state' placeholder='California' error={errors.state} onChange={handleChange}/>
             <InputField label='City' type='text' name='city' id='city' placeholder='Los Angeles' error={errors.city} onChange={handleChange}/>
           </div>
 
-          <div className='flex gap-6'>
+          <div className='flex gap-6 sm:flex-col sm:gap-4 lg:flex-row lg:gap-8'>
             <InputField label='Phone Number' type='tel' name='phone' id='phone' placeholder='+1 234 5678 90' error={errors.phone} onChange={handleChange}/>
             <InputField label='Password' type='password' name='password' id='password' error={errors.password} onChange={handleChange}/>
           </div>
