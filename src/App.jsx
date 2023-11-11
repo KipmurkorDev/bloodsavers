@@ -40,18 +40,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<Signup onLogin={handleLogin} />} />
-        {isLoggedIn ? (
-          <Route path="/dashboard" element={<Dashboard />} />
-        ) : (
-          // redirect the user to the login page if they are not logged in
-          <Route path="/dashboard" element={<Navigate to="/login" />} />
-        )}
-        {isLoggedIn ? (
-          <Route path="/donate" element={<Donate />} />
-        ) : (
-          // redirect the user to the login page if they are not logged in
-          <Route path="/donate" element={<Navigate to="/login" />} />
-        )}
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/donate" element={<Donate />} />
       </Routes>
       {!isAuthPage ? <Footer /> : null}
     </>

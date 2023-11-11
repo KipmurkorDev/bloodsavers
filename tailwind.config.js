@@ -8,6 +8,7 @@ export default {
     extend: {
       backgroundImage: {
         'hero': "url('./banner.png')",
+        'donate': "url('./donate.png')",
       },
     },
   },

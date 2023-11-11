@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import {FaCamera} from 'react-icons/fa'
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
