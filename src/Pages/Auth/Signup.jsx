@@ -40,7 +40,7 @@ function SelectField({label, name, id, value, onChange, error}) {
 
 const Signup = ({onLogin}) => {
 
-  const initialFormData = {
+  const [form, setForm] = useState({
     name: '',
     email: '',
     country: '',
@@ -50,50 +50,39 @@ const Signup = ({onLogin}) => {
     phone: '',
     password: '',
     profile: null
-  }
+  });
 
-  const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const accessToken = localStorage.getItem('accessToken');
-
   const navigate = useNavigate();
-
   const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
-    if (type === "file") {
-      const file = e.target.files[0];
-      setFormData((prevData) => ({ ...prevData, [name]: file }));
-    } else {
-      setFormData((prevData) => ({ ...prevData, [name]: value }));
-    }
+    const file = type === "file" && e.target.files ? e.target.files[0] : null;
+    setForm((prevForm) => ({ ...prevForm, [name]: type === "file" ? file : value }));
     setErrors({ ...errors, [name]: undefined });
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    console.log(form);
     try {
-      const response = await axios.post(`${baseUrl}/blood-savers/signup/`, formData, {
+      const response = await axios.post(`${baseUrl}/blood-savers/signup/`, form, {
         headers: {
-          'Authorization': `Bearer ${accessToken}`,
+          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
           'Content-Type': 'multipart/form-data',
-          'Access-Control-Allow-Origin': "*",
-          'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         },
       });
       console.log(response);
-      if(response.status === 201) {
-        toast.success("Successfully created event", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+      if (response.status === 201) {
+        toast.success("Successfully created an account", { position: toast.POSITION.TOP_RIGHT });
         navigate('/signup');
       } else {
-        console.error("Event creation failed");
-        toast.error("Error creating events");
+        console.error("Signup failed");
+        toast.error("Error creating account");
       }
     } catch (error) {
       if (error.response) {
@@ -102,7 +91,7 @@ const Signup = ({onLogin}) => {
           setErrors(error.response.data.errors);
           toast.error("Some fields are missing");
         } else if (error.response.status === 409) {
-          toast.error("Event already created");
+          toast.error("Account already created");
         } else {
           toast.error(error.response.data.message);
         }
@@ -111,7 +100,7 @@ const Signup = ({onLogin}) => {
       }
       setIsSubmitting(false);
     }
-  }
+  };
 
   // const handleCameraClick = () => {
   //   document.getElementById('profile').click();

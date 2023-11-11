@@ -11,10 +11,10 @@ const Hero = () => {
           Your blood donation can give a precious smile to someone's face. Join our community of donors today.
         </p>
         <div className="space-x-4">
-          <button className="px-6 py-3 bg-white text-rose-500 rounded-lg hover:bg-red-600">
+          <button className="px-6 py-3 bg-white text-rose-500 rounded-lg transition hover:duration-500 ease-in-out hover:bg-rose-500 hover:text-white">
             Donate Now
           </button>
-          <button className="px-6 py-3 bg-transparent text-white rounded-lg border border-white hover:bg-red-100">
+          <button className="px-6 py-3 bg-transparent text-white rounded-lg border border-white transition hover:duration-500 ease-in-out hover:bg-white hover:text-rose-500">
             Seek blood
           </button>
         </div>
