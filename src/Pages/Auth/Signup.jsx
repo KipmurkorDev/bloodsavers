@@ -62,7 +62,7 @@ const Signup = ({ onLogin }) => {
     name: "",
     email: "",
     country: "",
-    bloodGroup: "",
+    bloodGroup: "A+",
     state: "",
     city: "",
     phone: "",
