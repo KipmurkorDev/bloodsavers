@@ -91,7 +91,7 @@ const Donors = () => {
                 <div className="flex justify-between mt-4">
                   <div className="flex gap-4">
                     <div className="w-[50px] h-[50px] rounded-full bg-gray-300">
-                      <img src={baseUrl + donor?.profile} alt="Donor Profile" />
+                      <img src={donor?.profile} alt="Donor Profile" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold">{donor?.name}</h3>

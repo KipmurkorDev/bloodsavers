@@ -101,7 +101,7 @@ const Signup = ({ onLogin }) => {
         toast.success("Successfully created an account", {
           position: toast.POSITION.TOP_RIGHT,
         });
-        navigate("/signup");
+        navigate("/login");
       } else {
         console.error("Signup failed");
         toast.error("Error creating account");
