@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      {!isAuthPage && !isLoggedIn ? <AuthNav /> : null}
+      {!isAuthPage && !isLoggedIn ? <Navbar /> : null}
       {isAuthPage ? <LogoNav /> : null}
       {!isAuthPage && isLoggedIn ? <Navbar isLoggedIn={isLoggedIn}  /> : null}
       <ToastContainer />
