@@ -115,7 +115,7 @@ const Signup = ({onLogin}) => {
         <p className="text-center text-stone-400 text-lg font-medium py-6">Join BloodSavers help save lives</p>
         <form action="" className='flex flex-col gap-8 sm:items-center' onSubmit={handleSubmit}>
 
-          <div className='flex gap-6 sm:flex-col sm:gap-4 lg:flex-row lg:gap-8'>
+          <div className='flex gap-6 sm:flex-col sm:gap-4 md:flex-col lg:flex-row lg:gap-8'>
               <InputField label="Full Name" type="text" name="name" id="name" placeholder='Enter full name' error={errors.name} onChange={handleChange} />
               <InputField label="Email" type="email" name="email" id="email" placeholder='johndoe@example.com' onChange={handleChange}/>
           </div>
