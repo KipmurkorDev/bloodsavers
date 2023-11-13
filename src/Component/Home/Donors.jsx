@@ -4,7 +4,7 @@ import DonorDetails from "../../Component/Home/DonorDetails";
 
 // const DonorDetails = lazy(() => import("../../Component/Home/DonorDetails"));
 
-const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+
 
 const Donors = () => {
   const [donors, setDonors] = useState([]);
@@ -17,6 +17,8 @@ const Donors = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
   useEffect(() => {
     async function getDonors() {
