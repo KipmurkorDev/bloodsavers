@@ -92,7 +92,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        `${baseUrl}/blood-savers/signup`,
+        `https://blood-savers-api.vercel.app/blood-savers/signup`,
         form,
         {
           headers: {
