@@ -66,16 +66,16 @@ const Donors = () => {
       <div>
         <form
           action=""
-          className="flex justify-between my-4"
+          className="flex justify-between w-[100%] my-4 flex-col sm:flex-row gap-4"
           onSubmit={handleSubmit}
         >
-          <div className="formOne">
+          <div className="formOne mb-4 sm:mb-0 sm:mr-4">
             <input
               type="text"
               placeholder="Search by name, city or country"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-[585px] h-[3em] bg-white rounded-[10px] border-2 border-stone-500 placeholder:text-stone-400 placeholder:text-sm font-medium px-3"
+              className="w-full sm:w-[200px] sm:text-sm h-[3em] bg-white rounded-[10px] border-2 border-stone-500 placeholder:text-stone-400 placeholder:text-sm font-medium px-3"
             />
           </div>
           <div className="formTwo">
@@ -83,7 +83,7 @@ const Donors = () => {
               name="bloodGroup"
               value={formData.bloodGroup}
               onChange={handleChange}
-              className="w-[585px] h-[3em] bg-white rounded-[10px] border-2 border-stone-500 placeholder:text-stone-400 placeholder:text-sm font-medium px-3"
+              className="w-full sm:w-[200px] sm:text-sm h-[3em] bg-white rounded-[10px] border-2 border-stone-500 placeholder:text-stone-400 placeholder:text-sm font-medium px-3"
             >
               <option value="A+">A+</option>
               <option value="A-">A-</option>
