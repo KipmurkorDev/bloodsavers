@@ -8,9 +8,7 @@ const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 const Donors = () => {
   const [donors, setDonors] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [formData, setFormData] = useState({
-    bloodGroup: "A+",
-  });
+  const [formData, setFormData] = useState({bloodGroup: "A+"});
   const [error, setError] = useState(null);
   const [filteredDonors, setFilteredDonors] = useState([]);
 
@@ -33,14 +31,14 @@ const Donors = () => {
   }, [formData.bloodGroup]);
 
   useEffect(() => {
-
+    if(donors) {
     const filtered = donors.filter(
       (donor) =>
         donor.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
         donor.bloodGroup.toLowerCase() === formData.bloodGroup.toLowerCase() || donor.city.toLowerCase().includes(searchQuery.toLowerCase()) || donor.country.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredDonors(filtered);
-
+  }
   }, [searchQuery, formData.bloodGroup, donors]);
 
   const handleSubmit = async (e) => {
