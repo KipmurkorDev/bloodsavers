@@ -33,14 +33,14 @@ const Donors = () => {
   }, [formData.bloodGroup]);
 
   useEffect(() => {
-    if(donors) {
+
     const filtered = donors.filter(
       (donor) =>
         donor.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
         donor.bloodGroup.toLowerCase() === formData.bloodGroup.toLowerCase() || donor.city.toLowerCase().includes(searchQuery.toLowerCase()) || donor.country.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredDonors(filtered);
-  }
+
   }, [searchQuery, formData.bloodGroup, donors]);
 
   const handleSubmit = async (e) => {
