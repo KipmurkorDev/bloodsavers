@@ -23,7 +23,7 @@ const Donors = () => {
   useEffect(() => {
     async function getDonors() {
       try {
-        const response = await axios.get(`https://blood-savers-api.vercel.app/blood-savers`);
+        const response = await axios.get(`${baseUrl}/blood-savers`);
         setDonors(response.data.data);
       } catch (error) {
         console.error("Error fetching donors", error);
@@ -48,7 +48,7 @@ const Donors = () => {
     e.preventDefault();
     try {
       const response = await axios.get(
-        `https://blood-savers-api.vercel.app/blood-savers/search?name=${searchQuery}&bloodGroup=${formData.bloodGroup}`
+        `${baseUrl}/blood-savers/search?name=${searchQuery}&bloodGroup=${formData.bloodGroup}`
       );
 
       setDonors(response.data.data);
@@ -99,7 +99,7 @@ const Donors = () => {
           </button>
         </form>
 
-        {filteredDonors === 0 && !error && (
+        {filteredDonors.length === 0 && !error && (
           <p className="text-red-500">Donor not found. Please try again.</p>
         )}
 
