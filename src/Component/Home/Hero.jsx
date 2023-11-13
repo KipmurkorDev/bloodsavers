@@ -11,7 +11,7 @@ const Hero = () => {
   };
 
   return (
-    <div className=' h-[50%] sm:h-screen rounded-2xl my-10 mx-8 text-white' style={backgroundImageStyle}>
+    <div className=' h-[50%] py-10 text-center sm:h-screen rounded-2xl my-10 mx-8 text-white' style={backgroundImageStyle}>
       <div className="flex flex-col items-center justify-center h-full px-4">
         <h1 className=" text-6xl text-center font-extrabold mb-4">
           Donate blood, Save lives
