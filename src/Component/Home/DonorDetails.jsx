@@ -2,7 +2,7 @@ import React from "react";
 
 const DonorDetails = ({donor, key}) => {
   return (
-    <div className="border rounded-lg shadow-lg p-6 mb-4 sm:flex sm:items-center" key={key}>
+    <div className="border rounded-lg shadow-lg p-6 mb-4 sm:flex sm:items-center" >
       <div className="flex gap-6 items-center">
         <img
           src={donor?.profile}

@@ -56,7 +56,7 @@ const Donors = () => {
       setError("Error fetching donors. Please try again.");
     }
   };
-  console.log("donors:", donors);
+  // console.log("donors:", donors);
 
   return (
     <div className="mx-8 py-10">
