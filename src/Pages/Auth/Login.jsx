@@ -56,18 +56,14 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className="flex flex-col justify-center items-center align-middle mt-10">
-      <div className="flex flex-col">
-        <h2 className="text-[40px] font-bold text-center">Login</h2>
-        <p className="text-center text-stone-400 text-lg font-medium py-6">
+      <div className="w-full max-w-md">
+        <h2 className="text-3xl font-bold text-center mb-4">Login</h2>
+        <p className="text-center text-gray-600 text-lg font-medium mb-6">
           Welcome back to BloodSaver
         </p>
-        <form
-          action=""
-          className="inline-flex flex-col gap-6 w-[500px]"
-          onSubmit={handleSubmit}
-        >
-          <div className="inline-flex flex-col gap-2">
-            <label htmlFor="email" className="text-xl font-medium">
+        <form onSubmit={handleSubmit} className='mx-10 sm:mx-0'>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-lg font-medium">
               Email
             </label>
             <input
@@ -77,7 +73,7 @@ const Login = ({ onLogin }) => {
               value={formData.email}
               onChange={handleChange}
               placeholder="johndoe@example.com"
-              className="w-full px-6 h-[50px] rounded-[10px] border-2 border-neutral-400 placeholder:text-stone-400 placeholder:text-lg font-medium"
+              className="w-full px-4 py-2 rounded-md border-2 border-gray-300 placeholder-gray-500 text-lg font-medium"
               disabled={isSubmitting}
             />
             {error.email && (
@@ -85,8 +81,8 @@ const Login = ({ onLogin }) => {
             )}
           </div>
 
-          <div className="inline-flex flex-col gap-2">
-            <label htmlFor="password" className="text-xl font-medium">
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-lg font-medium">
               Password
             </label>
             <input
@@ -96,7 +92,7 @@ const Login = ({ onLogin }) => {
               value={formData.password}
               onChange={handleChange}
               placeholder=""
-              className="w-full px-6 h-[50px] rounded-[10px] border-2 border-neutral-400 placeholder:text-stone-400 placeholder:text-lg font-medium"
+              className="w-full px-4 py-2 rounded-md border-2 border-gray-300 placeholder-gray-500 text-lg font-medium"
               disabled={isSubmitting}
             />
             {error.password && (
@@ -104,19 +100,20 @@ const Login = ({ onLogin }) => {
             )}
           </div>
 
-          <div className="inline-flex items-center justify-center">
+          <div className="my-6">
             <button
               type="submit"
-              className="bg-red-800 rounded-[15px] h-[2.7em] w-[200px] mx-auto text-white text-lg font-medium"
+              className="w-full bg-red-800 rounded-md py-2 text-white text-lg font-medium"
+              disabled={isSubmitting}
             >
               {isSubmitting ? "Logging in..." : "Login"}
             </button>
           </div>
         </form>
-        <p className="py-3">
+        <p className="text-center">
           New here?{" "}
-          <Link to="/signup">
-            <span className="text-blue-400">Sign up</span>
+          <Link to="/signup" className="text-blue-400">
+            Sign up
           </Link>
         </p>
       </div>
