@@ -1,7 +1,8 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import axios from "axios";
+import DonorDetails from "../../Component/Home/DonorDetails";
 
-const DonorDetails = lazy(() => import("../../Component/Home/DonorDetails"));
+// const DonorDetails = lazy(() => import("../../Component/Home/DonorDetails"));
 
 const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
@@ -100,13 +101,11 @@ const Donors = () => {
           <p className="text-red-500">Donor not found. Please try again.</p>
         )}
 
-        <Suspense fallback={<div>Loading...</div>}>
           <div className="grid grid-cols-1 space-y-4">
             {filteredDonors.map((donor) => (
               <DonorDetails key={donor._id} donor={donor} />
             ))}
           </div>
-        </Suspense>
       </div>
     </div>
   );
