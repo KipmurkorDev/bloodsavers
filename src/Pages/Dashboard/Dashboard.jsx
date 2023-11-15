@@ -46,7 +46,7 @@ const Dashboard = () => {
   console.log(donor);
 
   return (
-    <div className="flex flex-col w-full bg-white">
+    <div className="flex flex-col w-full min-h-screen bg-white">
       <div className="flex-grow p-4 md:p-10">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {bloodDashboardData.map((item) => {

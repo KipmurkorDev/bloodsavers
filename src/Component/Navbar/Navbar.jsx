@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import { NavLink } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from "./Modal";
 
 const Navbar = ({isLoggedIn}) => {
   const [showModal, setShowModal] = useState(false);
@@ -31,6 +32,9 @@ const Navbar = ({isLoggedIn}) => {
         </div>
         <div>
           <button className="bg-black rounded-[10px] py-3 px-4 font-medium" onClick={handleModal}>Send Alert</button>
+          {showModal && (
+            <Modal onClose={() => setShowModal(false)} />
+          )}
         </div>
       </div>
   );
