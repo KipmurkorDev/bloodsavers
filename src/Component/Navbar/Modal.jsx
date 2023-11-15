@@ -38,10 +38,11 @@ const Modal = ({ onClose }) => {
           <button className="bg-red-800 text-white py-2 px-4 rounded" type="submit">
             Send Alert
           </button>
-        </form>
-        <div className="absolute right-0 top-0 cursor-pointer mt-2 mr-2">
+          <div className="absolute right-0 top-0 cursor-pointer mt-2 mr-2">
           <IoIosClose onClick={onClose} size={24} />
         </div>
+        </form>
+        
       </div>
     </div>
   );
