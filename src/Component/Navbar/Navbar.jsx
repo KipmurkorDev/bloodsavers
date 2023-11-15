@@ -1,13 +1,18 @@
-import {useState} from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
-import { Link, NavLink } from "react-router-dom";
-import Modal from "../Home/Modal";
-import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
+import { NavLink } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = ({isLoggedIn}) => {
   const [showModal, setShowModal] = useState(false);
+
+  const { id } = useParams();
+
+
+
+  // const urlMatch = useLocation().pathname === "/dashboard";
+
 
   const handleModal = () => {
     setShowModal(!showModal);
@@ -22,7 +27,7 @@ const Navbar = ({isLoggedIn}) => {
         <div className="inline-flex gap-6  text-xl font-medium">
           <NavLink to="/" activeClassName='active'>Home</NavLink>
           <NavLink to="/donate" activeClassName='active'>Donate</NavLink>
-          <NavLink to="/dashboard" activeClassName='active'>Dashboard</NavLink>
+          <NavLink to={`/dashboard/${id}`} activeClassName='active'>Dashboard</NavLink>
         </div>
         <div>
           <button className="bg-black rounded-[10px] py-3 px-4 font-medium" onClick={handleModal}>Send Alert</button>

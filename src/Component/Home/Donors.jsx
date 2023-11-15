@@ -1,6 +1,8 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import DonorDetails from "../../Component/Home/DonorDetails";
+
 
 // const DonorDetails = lazy(() => import("../../Component/Home/DonorDetails"));
 
@@ -12,13 +14,19 @@ const Donors = () => {
   const [formData, setFormData] = useState({bloodGroup: "A+"});
   const [error, setError] = useState(null);
   const [filteredDonors, setFilteredDonors] = useState([]);
+  const [selectedDonor, setSelectedDonor] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+  const { id } = useParams();
+  const donorDashboard = donors.filter((donor) => donor._id === parseInt(id));
+
+  console.log("donorDashboard:", donorDashboard);
+
+
 
   useEffect(() => {
     async function getDonors() {

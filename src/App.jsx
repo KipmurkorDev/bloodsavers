@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import { useState } from "react";
 import Signup from "./Pages/Auth/Signup";
 import Login from "./Pages/Auth/Login";
@@ -22,12 +22,8 @@ function App() {
   const isAuthPage =
     useLocation().pathname === "/login" || useLocation().pathname === "/signup";
 
-  const home = useLocation().pathname === "/home";
 
-  const Navigate = useNavigate();
 
-  // console.log("isLoggedIn:", isLoggedIn);
-  // console.log("isAuthPage:", isAuthPage);
 
   return (
     <>
@@ -40,7 +36,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<Signup onLogin={handleLogin} />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/:donorId" element={<Dashboard />} />
         <Route path="/donate" element={<Donate />} />
       </Routes>
       {!isAuthPage ? <Footer /> : null}

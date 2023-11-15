@@ -1,6 +1,13 @@
-import React from "react";
+import {useState, useEffect} from "react";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom"
+import axios from "axios";;
 
 const DonorDetails = ({donor, key}) => {
+  const { id } = useParams();
+
+
+
   return (
     <div className="border rounded-lg shadow-lg p-6 mb-4 sm:flex sm:items-center" >
       <div className="flex gap-6 items-center">
@@ -18,7 +25,7 @@ const DonorDetails = ({donor, key}) => {
           <p className="text-gray-500">
             {donor.city}, {donor.country}
           </p>
-          <button className=" bg-rose-800 px-5 py-2 rounded font-semibold text-white h-[2.7em] mt-2 sm:mt-0">
+          <button className=" bg-rose-800 px-5 py-2 rounded font-semibold text-white h-[2.7em] mt-2 sm:mt-0" >
             Contact
           </button>
         </div>
