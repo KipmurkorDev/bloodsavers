@@ -13,7 +13,7 @@ const Modal = ({ onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.phone.length !== 10) {
+    if (formData.phone.length < 10) {
       toast.error('Please enter a valid phone number');
     } else {
       toast.success('Alert sent successfully');
@@ -39,7 +39,7 @@ const Modal = ({ onClose }) => {
             Send Alert
           </button>
           <div className="absolute right-0 top-0 cursor-pointer mt-2 mr-2">
-          <IoIosClose onClick={onClose} size={24} />
+          <IoIosClose onClick={onClose} size={50} className='text-black' />
         </div>
         </form>
 
