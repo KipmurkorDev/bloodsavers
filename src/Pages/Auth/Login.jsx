@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Login = ({ onLogin }) => {
+const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState({});
@@ -15,11 +15,11 @@ const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setError({}); // Reset error state
+    setError({});
 
     try {
       const response = await axios.post(
-        `https://blood-savers-api.vercel.app/blood-savers/login`,
+        `${baseUrl}/blood-savers/login`,
         formData
       );
 
@@ -31,6 +31,7 @@ const Login = ({ onLogin }) => {
         navigate("/home");
       }
     } catch (error) {
+      console.log(error);
       if (error.response) {
         setIsSubmitting(false);
         if (error.response.status === 404) {
@@ -38,7 +39,7 @@ const Login = ({ onLogin }) => {
         } else if (error.response.status === 401) {
           toast.error("Wrong Credentials");
         } else if (error.response.status === 400) {
-          setError(error.response.data.errors); // Show backend errors
+          setError(error.response.data.errors);
         } else {
           toast.error(error.response.data.message);
         }
@@ -61,7 +62,7 @@ const Login = ({ onLogin }) => {
         <p className="text-center text-gray-600 text-lg font-medium mb-6">
           Welcome back to BloodSaver
         </p>
-        <form onSubmit={handleSubmit} className='mx-10 sm:mx-0'>
+        <form onSubmit={handleSubmit} className="mx-10 sm:mx-0">
           <div className="mb-4">
             <label htmlFor="email" className="block text-lg font-medium">
               Email

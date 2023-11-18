@@ -1,43 +1,29 @@
 import { Route, Routes, useLocation, useParams } from "react-router-dom";
-import { useState } from "react";
 import Signup from "./Pages/Auth/Signup";
 import Login from "./Pages/Auth/Login";
-import Home from "./Pages/Home/Home";
 import Navbar from "./Component/Navbar/Navbar";
-import AuthNav from "./Component/Navbar/AuthNav";
-import LogoNav from "./Component/Navbar/LogoNav";
-import Dashboard from "./Pages/Dashboard/Dashboard";
-import Donate from "./Pages/Donate/Donate";
 import Footer from "./Component/Footer/Footer";
 import { ToastContainer } from "react-toastify";
-
-
+import Donors from "./Pages/Donors/Donors";
+import About from "./Pages/About/ABout";
+import DetailPage from "./Pages/DetailPage/DetailPage";
+import HomePage from "./Pages/HomePage/HomePage";
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  }
-
   const isAuthPage =
     useLocation().pathname === "/login" || useLocation().pathname === "/signup";
 
-
-
-
   return (
     <>
-      {!isAuthPage && !isLoggedIn ? <Navbar /> : null}
-      {isAuthPage ? <LogoNav /> : null}
-      {!isAuthPage && isLoggedIn ? <Navbar isLoggedIn={isLoggedIn}  /> : null}
+      <Navbar isAuthPage={isAuthPage} />
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/signup" element={<Signup onLogin={handleLogin} />} />
-        <Route path="/dashboard/:donorId" element={<Dashboard />} />
-        <Route path="/donate" element={<Donate />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/donors" element={<Donors />} />
+        <Route path="/donor/:donorId" element={<DetailPage />} />
       </Routes>
       {!isAuthPage ? <Footer /> : null}
     </>
