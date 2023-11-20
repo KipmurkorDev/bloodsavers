@@ -31,12 +31,12 @@ const Home = () => {
       <div>
         {loading && <p>Loading...</p>}
 
-        {donors.length === 0 && !error && !loading && (
+        {donors?.length === 0 && !error && !loading && (
           <p className="text-red-500">Donor not found. Please try again.</p>
         )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {donors.map((donor) => (
+          {donors?.map((donor) => (
             <div key={donor._id} className="bg-white p-4 rounded-lg shadow-md">
               <DetailCard donor={donor} />
             </div>

@@ -44,7 +44,7 @@ function Patient() {
             significant impact on their lives.
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 mb-14">
-            {donors.map((donor) => (
+            {donors?.map((donor) => (
               <DetailCard key={donor._id} donor={donor} />
             ))}
           </div>
