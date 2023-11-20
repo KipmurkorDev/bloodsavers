@@ -53,7 +53,7 @@ const Navbar = ({ isAuthPage }) => {
         </div>
         {!IsLoggedIn || isAuthPage ? (
           <NavLink to={`/login`} activeClassName="active">
-            Login/Signup
+            Login
           </NavLink>
         ) : (
           <NavLink to={`/`} activeClassName="active" onClick={handleLogout}>

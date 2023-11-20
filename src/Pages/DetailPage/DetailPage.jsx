@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+const baseUrl = import.meta.env.VITE_APP_API_URL;
 
 const DetailPage = () => {
   const [donor, setDonor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { donorId } = useParams();
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchDonorDetails = async () => {
       const accessToken = localStorage.getItem("token");
@@ -26,8 +28,12 @@ const DetailPage = () => {
           setError(`Error: ${response.data.message}`);
         }
       } catch (error) {
-        console.error(error);
-        setError("An error occurred while fetching data");
+        console.log(error);
+        if (error.response.status === 401) {
+          navigate("/login");
+        } else {
+          setError("An error occurred while fetching data");
+        }
       } finally {
         setLoading(false);
       }

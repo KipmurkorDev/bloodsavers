@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import DetailCard from "../../Component/Home/DetailCard";
+import DetailCard from "../../Component/Utils/DetailCard";
+import SearchForm from "../../Component/Utils/SearchForm";
 const baseUrl = import.meta.env.VITE_APP_API_URL;
 
 function Donors() {
@@ -34,15 +35,22 @@ function Donors() {
       {error && <p className="text-red-600">{error}</p>}
 
       {loading ? (
-        <p className="text-gray-600">Loading...</p>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {donors.map((donor) => (
-            <div key={donor._id} className="bg-white p-4 rounded-md shadow-md">
-              <DetailCard donor={donor} />
-            </div>
-          ))}
+        <div className="flex justify-center items-center h-screen">
+          <p className="text-gray-600">Loading...</p>{" "}
         </div>
+      ) : (
+        <>
+          <SearchForm />
+          <div className="my-6 text-black-700 text-lg mx-4">
+            These are the people who can help you with their blood. Reach out to
+            them if you need assistance.
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 mb-14">
+            {donors.map((donor) => (
+              <DetailCard key={donor._id} donor={donor} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

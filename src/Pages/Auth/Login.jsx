@@ -9,7 +9,7 @@ const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState({});
 
-  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+  const baseUrl = import.meta.env.VITE_APP_API_URL;
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -56,7 +56,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center align-middle mt-10">
+    <div className="flex flex-col justify-center items-center mt-10">
       <div className="w-full max-w-md">
         <h2 className="text-3xl font-bold text-center mb-4">Login</h2>
         <p className="text-center text-gray-600 text-lg font-medium mb-6">
@@ -64,7 +64,7 @@ const Login = () => {
         </p>
         <form onSubmit={handleSubmit} className="mx-10 sm:mx-0">
           <div className="mb-4">
-            <label htmlFor="email" className="block text-lg font-medium">
+            <label htmlFor="email" className="block text-xs font-bold mb-1">
               Email
             </label>
             <input
@@ -74,16 +74,16 @@ const Login = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="johndoe@example.com"
-              className="w-full px-4 py-2 rounded-md border-2 border-gray-300 placeholder-gray-500 text-lg font-medium"
+              className="w-2/3 px-3 py-2 rounded-md border-2 border-gray-300 placeholder-gray-500 text-xs font-medium"
               disabled={isSubmitting}
             />
             {error.email && (
-              <p className="text-red-500 text-sm">{error?.email}</p>
+              <p className="text-red-500 text-xs mt-1">{error?.email}</p>
             )}
           </div>
 
           <div className="mb-4">
-            <label htmlFor="password" className="block text-lg font-medium">
+            <label htmlFor="password" className="block text-xs font-bold mb-1">
               Password
             </label>
             <input
@@ -93,27 +93,26 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder=""
-              className="w-full px-4 py-2 rounded-md border-2 border-gray-300 placeholder-gray-500 text-lg font-medium"
+              className="w-2/3 px-3 py-2 rounded-md border-2 border-gray-300 placeholder-gray-500 text-xs font-medium"
               disabled={isSubmitting}
             />
             {error.password && (
-              <p className="text-red-500 text-sm">{error?.password}</p>
+              <p className="text-red-500 text-xs mt-1">{error?.password}</p>
             )}
           </div>
-
-          <div className="my-6">
+          <div className="ml-16">
             <button
               type="submit"
-              className="w-full bg-red-800 rounded-md py-2 text-white text-lg font-medium"
+              className="w-1/3 md:w-1/2 bg-red-800 rounded-md py-1 text-white text-sm font-medium mx-auto"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Logging in..." : "Login"}
             </button>
           </div>
         </form>
-        <p className="text-center">
-          New here?{" "}
-          <Link to="/signup" className="text-blue-400">
+        <p className="ml-24 py-1 text-xs">
+          New here?
+          <Link to="/signup" className="text-blue-400 pl-1">
             Sign up
           </Link>
         </p>
