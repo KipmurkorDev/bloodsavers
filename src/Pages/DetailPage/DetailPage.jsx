@@ -15,11 +15,14 @@ const DetailPage = () => {
       const accessToken = localStorage.getItem("token");
 
       try {
-        const response = await axios.get(`${baseUrl}/blood-savers/${donorId}`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
+        const response = await axios.get(
+          `https://blood-savers-api.vercel.app/blood-savers/${donorId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
 
         if (response.status === 200) {
           setDonor(response.data.data);
@@ -56,31 +59,32 @@ const DetailPage = () => {
         {donor && (
           <>
             <img
-              src={donor.profile}
-              alt={`${donor.name}'s Profile`}
+              src={donor?.profile}
+              alt={`${donor?.name}'s Profile`}
               className="mb-4 rounded-full w-32 h-32 object-cover mx-auto"
             />
-            <div className="mb-4 text-2xl font-semibold">{donor.name}</div>
+            <div className="mb-4 text-2xl font-semibold">{donor?.name}</div>
 
             <div className="mb-4">
-              <span className="font-semibold">City:</span> {donor.city}
+              <span className="font-semibold">City:</span> {donor?.city}
             </div>
 
             <div className="mb-4">
-              <span className="font-semibold">State:</span> {donor.state}
+              <span className="font-semibold">State:</span> {donor?.state}
             </div>
 
             <div className="mb-4">
-              <span className="font-semibold">Country:</span> {donor.country}
+              <span className="font-semibold">Country:</span> {donor?.country}
             </div>
 
             <div className="mb-4">
               <span className="font-semibold">Blood Group:</span>{" "}
-              {donor.bloodGroup}
+              {donor?.bloodGroup}
             </div>
 
             <div>
-              <span className="font-semibold">Phone Number:</span> {donor.phone}
+              <span className="font-semibold">Phone Number:</span>{" "}
+              {donor?.phone}
             </div>
           </>
         )}

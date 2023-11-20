@@ -11,7 +11,9 @@ function Patient() {
   useEffect(() => {
     const fetchDonors = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/blood-savers/recipient`);
+        const response = await axios.get(
+          `https://blood-savers-api.vercel.app/blood-savers/recipient`
+        );
 
         if (response.status === 200) {
           setDonors(response.data.data);

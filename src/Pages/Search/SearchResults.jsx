@@ -16,7 +16,7 @@ function SearchResults() {
     const getSearchResults = async () => {
       try {
         const response = await axios.get(
-          `${baseUrl}/blood-savers/search?name=${name}&bloodGroup=${bloodGroup}`
+          `https://blood-savers-api.vercel.app/blood-savers/search?name=${name}&bloodGroup=${bloodGroup}`
         );
         setResults(response.data.data);
       } catch (error) {
@@ -31,7 +31,7 @@ function SearchResults() {
     <div className="p-6 mb-6">
       <SearchForm />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {results.map((donor) => (
+        {results?.map((donor) => (
           <div key={donor._id} className="bg-white p-4 rounded-lg shadow-md">
             <DetailCard donor={donor} />
           </div>

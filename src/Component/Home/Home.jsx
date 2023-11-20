@@ -12,7 +12,9 @@ const Home = () => {
     async function getDonors() {
       try {
         setLoading(true);
-        const response = await axios.get(`${baseUrl}/blood-savers/heros`);
+        const response = await axios.get(
+          `https://blood-savers-api.vercel.app/blood-savers/heros`
+        );
         setDonors(response.data.data);
         setLoading(false);
       } catch (error) {

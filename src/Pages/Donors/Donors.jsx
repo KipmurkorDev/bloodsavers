@@ -12,7 +12,9 @@ function Donors() {
   useEffect(() => {
     const fetchDonors = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/blood-savers`);
+        const response = await axios.get(
+          `https://blood-savers-api.vercel.app/blood-savers`
+        );
 
         if (response.status === 200) {
           setDonors(response.data.data);
@@ -46,7 +48,7 @@ function Donors() {
             them if you need assistance.
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 mb-14">
-            {donors.map((donor) => (
+            {donors?.map((donor) => (
               <DetailCard key={donor._id} donor={donor} />
             ))}
           </div>
