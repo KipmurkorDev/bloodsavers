@@ -30,7 +30,7 @@ function SearchResults() {
   return (
     <div className="p-6 mb-6">
       <SearchForm />
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {results?.map((donor) => (
           <div key={donor._id} className="bg-white p-4 rounded-lg shadow-md">
             <DetailCard donor={donor} />
