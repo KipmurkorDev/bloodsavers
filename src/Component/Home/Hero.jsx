@@ -24,12 +24,12 @@ const Hero = () => {
           our community of donors today.
         </p>
         <div className="space-x-4">
-          <Link to="/donate">
+          <Link to="/signup">
             <button className="px-4 py-2 bg-white text-rose-500 rounded-lg transition hover:duration-500 ease-in-out hover:bg-rose-500 hover:text-white">
               Donate Now
             </button>
           </Link>
-          <Link to="/seek-blood">
+          <Link to="/signup">
             <button className="px-4 py-2 bg-transparent text-white rounded-lg border border-white transition hover:duration-500 ease-in-out hover:bg-white hover:text-rose-500">
               Seek blood
             </button>
